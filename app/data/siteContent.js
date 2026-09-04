@@ -1,12 +1,12 @@
 export const companyInfo = {
   name: "LIZA Enterprise and Technology",
   shortName: "LIZA",
-  phone: "+92 3800 8060",
-  phoneHref: "tel:+9238008060",
+  phone: "+91 9365804285",
+  phoneHref: "tel:+919365804285",
   whatsappHref:
-    "https://wa.me/9238008060?text=Hello%20LIZA%2C%20I%20want%20details%20about%20your%20CNC%20router%20machines.",
-  website: "www.lizaenterprise.in",
-  email: "sales@lizaenterprise.in",
+    "https://wa.me/919365804285?text=Hello%20LIZA%2C%20I%20want%20details%20about%20your%20CNC%20router%20machines.",
+  website: "www.lizacnc.com",
+  email: "tafadarbadrulislam@gmail.com",
   location: "CNC router solutions for workshops, fabricators, signage, and wood manufacturing businesses.",
 };
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { companyInfo } from "../data/siteContent";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -50,9 +51,13 @@ export default function Navbar() {
           className="group relative flex select-none items-center gap-3.5 text-left"
         >
           <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-cyan-400/40 bg-gradient-to-br from-cyan-950 to-slate-950 shadow-[0_0_20px_rgba(6,182,212,0.25)] transition-transform duration-300 group-hover:scale-105 group-hover:border-cyan-400/70 group-hover:shadow-[0_0_25px_rgba(6,182,212,0.45)]">
-            <span className="bg-gradient-to-r from-cyan-300 to-lime-300 bg-clip-text text-xl font-black tracking-tight text-transparent">
-              LZ
-            </span>
+            <Image 
+              src={"/logo.png"}
+              width={100}
+              height={100}
+              alt="Liza Logo"
+            />
+
           </div>
 
           <div className="flex flex-col">

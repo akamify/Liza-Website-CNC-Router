@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const highlights = [
@@ -105,28 +106,15 @@ export default function Hero() {
             metals, acrylics, and industrial fabrication.
           </p>
 
-          {/* Call to Actions */}
+          {/* Contact action */}
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            {/* Primary CTA */}
-            <a
-              id="quote"
-              href="#contact"
-              data-enquiry-trigger="true"
+            <Link
+              href="/contact"
               className="group relative inline-flex h-14 items-center justify-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 px-8 text-sm font-bold text-slate-950 shadow-[0_0_30px_rgba(163,230,53,0.35)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_45px_rgba(163,230,53,0.55)] active:scale-95"
             >
-              <QuoteIcon />
-              <span className="relative z-10 tracking-wide">Get Custom Quote</span>
+              <span className="relative z-10 tracking-wide">Contact Us</span>
               <span className="pointer-events-none absolute inset-y-0 -left-[50%] w-[40%] -skew-x-12 bg-white/40 blur-md transition-all duration-700 group-hover:left-[130%]" />
-            </a>
-
-            {/* Secondary CTA */}
-            <a
-              href="#products"
-              className="group inline-flex h-14 items-center justify-center gap-3 rounded-xl border border-slate-700/80 bg-slate-900/40 px-8 text-sm font-semibold text-slate-200 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/50 hover:bg-cyan-950/30 hover:text-white hover:shadow-[0_0_25px_rgba(6,182,212,0.2)] active:scale-95"
-            >
-              <CubeIcon />
-              <span className="tracking-wide">Explore Lineup</span>
-            </a>
+            </Link>
           </div>
 
           {/* ==================================================

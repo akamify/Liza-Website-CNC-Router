@@ -1,38 +1,38 @@
 import Image from "next/image";
 import InternalPageHero from "../components/InternalPageHero";
-import { productCatalog } from "../data/siteContent";
 
 export const metadata = {
   title: "Gallery",
   description:
-    "View CNC router machine visuals, workshop presentation, and product highlights from the LIZA lineup.",
+    "View LIZA CNC router machines, product details, and workshop installations.",
 };
 
-const galleryItems = productCatalog.flatMap((product, index) => [
-  {
-    key: `${product.slug}-hero`,
-    image: product.image,
-    title: product.title,
-    description: product.description,
-    accent: index % 2 === 0 ? "lg:col-span-2" : "",
-  },
-  {
-    key: `${product.slug}-detail`,
-    image: product.image,
-    title: `${product.shortTitle} Applications`,
-    description:
-      "A presentation block for machine-focused marketing, factory visibility, and product-led lead generation.",
-    accent: "",
-  },
-]);
+const galleryItems = [
+  { image: "/galleryImages/img1.jpg", alt: "LIZA ENT 1325 NS CNC router machine", width: 1194, height: 880 },
+  { image: "/galleryImages/img2.jpg", alt: "LIZA 2D and 3D CNC router feature overview", width: 1031, height: 1525 },
+  { image: "/galleryImages/img3.jpg", alt: "LIZA Technology CNC router machine", width: 472, height: 421 },
+  { image: "/galleryImages/img4.jpg", alt: "LIZA double head CNC router machine", width: 1176, height: 1338 },
+  { image: "/galleryImages/img5.jpg", alt: "LIZA double head CNC router product details", width: 1175, height: 1338 },
+  { image: "/galleryImages/img6.jpg", alt: "LIZA CNC router showroom display", width: 1364, height: 1153 },
+  { image: "/galleryImages/img7.jpg", alt: "LIZA LET 1525 CNC router machine", width: 1266, height: 1243 },
+  { image: "/galleryImages/img8.jpg", alt: "CNC router installed in a workshop", width: 1079, height: 773 },
+  { image: "/galleryImages/img9.jpg", alt: "CNC router in a production workshop", width: 1280, height: 963 },
+  { image: "/galleryImages/img10.jpg", alt: "LIZA CNC router showroom display with control box", width: 1584, height: 993 },
+  { image: "/galleryImages/img11.jpg", alt: "LIZA ENT 1325 NS CNC router machine with accessories", width: 1290, height: 1197 },
+  { image: "/galleryImages/img12.jpg", alt: "LIZA LET 1525 MS Pro Plus CNC router machine", width: 1265, height: 1244 },
+  { image: "/galleryImages/img13.jpg", alt: "LIZA ENT 1325 NS CNC router product details", width: 1049, height: 1499 },
+  { image: "/galleryImages/img14.jpg", alt: "LIZA ENT 1525 SS Plus CNC router machine", width: 1346, height: 1169 },
+  { image: "/galleryImages/img15.jpg", alt: "LIZA CNC router machine product image", width: 1920, height: 1920 },
+  { image: "/galleryImages/img16.jpg", alt: "LIZA ENT 1325 NS CNC router machine with accessories", width: 1460, height: 1077 },
+];
 
 export default function GalleryPage() {
   return (
     <main>
       <InternalPageHero
         badge="Gallery"
-        title="Machine visuals matter because CNC buyers want to see the setup."
-        description="This gallery page gives the website a dedicated visual layer for machine presentation, workshop credibility, and product promotion."
+        title="See the machines, details, and workshop setups."
+        description="Explore LIZA CNC router models, product highlights, and real installation visuals."
         secondaryHref="/products"
         secondaryLabel="Browse Products"
       />
@@ -41,29 +41,32 @@ export default function GalleryPage() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(8,223,241,0.08),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(163,230,53,0.08),transparent_24%)]" />
 
         <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex items-center rounded-full border border-lime-400/20 bg-lime-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-lime-300">
+              CNC Router Gallery
+            </span>
+            <h2 className="mt-5 text-3xl font-black tracking-tight text-white sm:text-4xl">
+              Built for the shop floor.
+            </h2>
+            <p className="mt-4 text-base leading-7 text-slate-300 sm:text-lg">
+              Product views and on-site machine setups from the LIZA range.
+            </p>
+          </div>
+
+          <div className="mt-12 columns-1 gap-5 sm:columns-2 lg:columns-3">
             {galleryItems.map((item) => (
               <article
-                key={item.key}
-                className={`overflow-hidden rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(5,22,31,0.96),rgba(3,14,22,0.98))] shadow-[0_20px_60px_rgba(0,0,0,0.24)] ${item.accent}`}
+                key={item.image}
+                className="group mb-5 break-inside-avoid overflow-hidden rounded-[26px] border border-white/10 bg-[#071720] shadow-[0_20px_60px_rgba(0,0,0,0.24)]"
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-[#08151e]">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover transition-transform duration-500 hover:scale-[1.03]"
-                  />
-                </div>
-
-                <div className="p-6">
-                  <h2 className="text-2xl font-black text-white">
-                    {item.title}
-                  </h2>
-                  <p className="mt-3 text-sm leading-6 text-slate-300">
-                    {item.description}
-                  </p>
-                </div>
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  width={item.width}
+                  height={item.height}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="block h-auto w-full transition-transform duration-500 group-hover:scale-[1.025]"
+                />
               </article>
             ))}
           </div>

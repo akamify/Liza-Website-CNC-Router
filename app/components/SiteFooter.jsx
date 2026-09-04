@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { companyInfo, productCatalog } from "../data/siteContent";
+import Image from "next/image";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -19,7 +20,13 @@ export default function SiteFooter() {
           <div>
             <div className="flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/25 bg-cyan-400/10 text-xl font-black text-cyan-300">
-                LZ
+                <Image
+                  src={"/logo.png"}
+                  width={100}
+                  height={100}
+                  alt="Liza Logo"
+                />
+
               </div>
               <div>
                 <h3 className="text-2xl font-black tracking-wide text-white">
