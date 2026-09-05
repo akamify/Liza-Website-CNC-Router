@@ -68,6 +68,12 @@ export default function Hero() {
                         isActive ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
                       }`}
                     >
+                      {/* High-Converting Trust/Category Badge */}
+                      <div className="inline-flex items-center gap-2 rounded-full border border-cyan-200/60 bg-cyan-50/80 px-3.5 py-1 text-xs font-bold text-cyan-800 shadow-sm mb-3">
+                        <span className="flex h-2 w-2 rounded-full bg-cyan-600 animate-pulse" />
+                        <span>Featured Collection • Ready to Ship</span>
+                      </div>
+
                       <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.12]">
                         {prod.title}
                       </h2>
@@ -94,14 +100,16 @@ export default function Hero() {
                       </div>
 
                       {/* Explicit CTA Button Wrapper with high visibility padding */}
-                      <div className="mt-6 sm:mt-8 flex pb-2 lg:pb-0">
+                      <div className="mt-6 sm:mt-5 flex pb-2 lg:pb-0">
                         <button
                           type="button"
                           data-enquiry-trigger="true"
                           data-machine-type={prod.title}
                           className="group relative inline-flex h-13 sm:h-14 w-full sm:w-auto items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 px-8 text-sm sm:text-base font-bold text-white shadow-xl shadow-cyan-600/25 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer"
                         >
-                          <span className="relative z-10">Get Best Price For {prod.shortTitle || prod.title}</span>
+                          <span className="relative z-10 flex items-center gap-2">
+                            Get Best Price For {prod.shortTitle || prod.title} <span aria-hidden="true">→</span>
+                          </span>
                           <span className="pointer-events-none absolute inset-y-0 -left-[50%] w-[40%] -skew-x-12 bg-white/30 blur-md transition-all duration-700 group-hover:left-[130%]" />
                         </button>
                       </div>
