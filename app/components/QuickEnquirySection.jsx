@@ -30,11 +30,8 @@ export default function QuickEnquirySection() {
         {/* Optimized paddings for mobile: p-4 on mobile, p-6 on sm, p-8 on lg */}
         <div className="grid gap-6 rounded-3xl border border-slate-200 bg-slate-50 p-4 sm:p-6 lg:p-8 shadow-sm lg:grid-cols-[minmax(0,1fr)_minmax(340px,0.4fr)] lg:items-center">
           <div>
-            <span className="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.15em] text-cyan-900">
-              Quick Enquiry
-            </span>
 
-            <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-tight text-slate-950">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-tight text-slate-950">
               Need the right CNC router setup for your work?
             </h2>
 
