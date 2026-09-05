@@ -101,7 +101,7 @@ export default async function ProductDetailPage({ params }) {
                   <span className="text-white">Get Enquiry</span>
                 </a>
                 <a
-                  href="#"
+                  href="/contact"
                   data-enquiry-trigger="true"
                   data-machine-type={product.title}
                   className="inline-flex min-h-[46px] items-center justify-center rounded-xl border border-slate-300 bg-white px-6 text-sm font-bold text-slate-800 shadow-xs hover:bg-slate-50 hover:border-slate-400 cursor-pointer"
