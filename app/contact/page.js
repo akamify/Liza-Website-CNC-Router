@@ -1,4 +1,5 @@
 import InternalPageHero from "../components/InternalPageHero";
+import ContactEnquiryFormSection from "../components/ContactEnquiryFormSection";
 import { companyInfo } from "../data/siteContent";
 
 export const metadata = {
@@ -89,6 +90,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <ContactEnquiryFormSection />
     </main>
   );
 }
