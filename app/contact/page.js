@@ -29,60 +29,58 @@ export default function ContactPage() {
   return (
     <main>
       <InternalPageHero
-        badge="Contact"
-        title="Start the machine enquiry from the page or the popup."
+        badge="Contact Us"
+        title="Start your machine enquiry from the page or popup."
         description="This page gives buyers a focused contact destination while keeping the popup enquiry form available across the whole site."
         secondaryHref="/about"
         secondaryLabel="About Company"
       />
 
-      <section className="relative overflow-hidden bg-[#03111a] py-20 sm:py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(8,223,241,0.08),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(163,230,53,0.08),transparent_24%)]" />
-
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 border-b border-slate-200">
         <div className="relative mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(340px,0.9fr)]">
-            <div className="rounded-[32px] border border-cyan-400/15 bg-[#051722]/90 p-6 sm:p-8">
-              <span className="inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-cyan-300">
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-8 shadow-sm">
+              <span className="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-cyan-900">
                 Direct Contact
               </span>
 
-              <h2 className="mt-6 text-4xl font-black leading-[1.03] tracking-[-0.045em] text-white sm:text-5xl">
-                Reach the team quickly for machine-related decisions.
+              <h2 className="mt-5 text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl">
+                Reach out for machine guidance & quotes.
               </h2>
 
-              <div className="mt-8 space-y-4 text-sm leading-7 text-slate-300 sm:text-base">
-                <p>Phone: {companyInfo.phone}</p>
-                <p>Email: {companyInfo.email}</p>
-                <p>Website: {companyInfo.website}</p>
+              <div className="mt-6 space-y-3 text-sm leading-relaxed text-slate-700 font-semibold sm:text-base">
+                <p>Phone: <span className="text-slate-900 font-bold">{companyInfo.phone}</span></p>
+                <p>Email: <span className="text-slate-900 font-bold">{companyInfo.email}</span></p>
+                <p>Website: <span className="text-cyan-700 font-bold">{companyInfo.website}</span></p>
               </div>
 
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-3.5 sm:flex-row">
                 <a
-                  href="/contact"
+                  href="#"
                   data-enquiry-trigger="true"
-                  className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 px-7 text-sm font-bold text-slate-950"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 px-7 text-sm font-bold text-white shadow-md hover:shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
                 >
-                  Open Enquiry Popup
+                  <span className="text-white">Get Enquiry</span>
                 </a>
                 <a
                   href={companyInfo.phoneHref}
-                  className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-white/10 px-7 text-sm font-semibold text-slate-200"
+                  className="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-slate-300 bg-white px-7 text-sm font-bold text-slate-800 shadow-xs hover:bg-slate-50 hover:border-slate-400"
                 >
                   Call Now
                 </a>
               </div>
             </div>
 
-            <div className="grid gap-5">
+            <div className="grid gap-4">
               {supportCards.map((card) => (
                 <article
                   key={card.title}
-                  className="rounded-[28px] border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl"
+                  className="rounded-2xl border border-slate-200 bg-white p-5.5 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
                 >
-                  <h3 className="text-2xl font-black text-white">
+                  <h3 className="text-xl font-bold text-slate-900">
                     {card.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-300">
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600 font-medium">
                     {card.description}
                   </p>
                 </article>

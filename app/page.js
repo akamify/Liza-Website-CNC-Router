@@ -15,12 +15,12 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
+      <QuickEnquirySection />
       <ProductRange />
       <MachineSpotlight />
       <ApplicationsGrid />
       <CapabilitiesSection />
       <ServiceWorkflow />
-      <QuickEnquirySection />
       <TestimonialsSection />
       <FaqSection />
     </main>
