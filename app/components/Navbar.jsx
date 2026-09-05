@@ -7,18 +7,17 @@ import { companyInfo } from "../data/siteContent";
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Products", href: "/products" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "/", icon: HomeIcon },
+  { label: "Products", href: "/products", icon: PackageIcon },
+  { label: "Gallery", href: "/gallery", icon: GalleryIcon },
+  { label: "About", href: "/about", icon: InfoIcon },
+  { label: "Contact", href: "/contact", icon: ContactIcon },
 ];
 
 function isActiveRoute(pathname, href) {
   if (href === "/") {
     return pathname === "/";
   }
-
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
@@ -33,21 +32,20 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-
     return () => {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-slate-200/80 bg-white/90 py-3.5 backdrop-blur-md shadow-xs">
-      <div className="mx-auto flex max-w-[1536px] items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-slate-200/80 bg-white/95 py-3 backdrop-blur-md shadow-2xs">
+      <div className="mx-auto flex max-w-[1536px] items-center justify-between gap-3 px-3.5 sm:px-6 lg:px-8">
         <Link
           href="/"
           aria-label="LIZA Home"
-          className="group relative flex select-none items-center gap-3.5 text-left"
+          className="group relative flex select-none items-center gap-2.5 sm:gap-3.5 text-left"
         >
-          <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border border-cyan-500/30 bg-gradient-to-br from-cyan-50 to-slate-100 shadow-sm transition-transform duration-300 group-hover:scale-105 group-hover:border-cyan-500/60">
+          <div className="relative flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center overflow-hidden rounded-xl border border-cyan-500/30 bg-gradient-to-br from-cyan-50 to-slate-100 shadow-xs transition-transform duration-300 group-hover:scale-105">
             <Image 
               src={"/logo.png"}
               width={100}
@@ -58,12 +56,12 @@ export default function Navbar() {
 
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
-              <span className="text-2xl font-black tracking-wide text-slate-900">
+              <span className="text-xl sm:text-2xl font-black tracking-wide text-slate-900">
                 LIZA
               </span>
-              <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-sm" />
+              <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-xs" />
             </div>
-            <span className="text-[9px] font-bold uppercase tracking-[0.28em] text-cyan-800">
+            <span className="text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.24em] text-cyan-800">
               CNC Technologies
             </span>
           </div>
@@ -127,113 +125,88 @@ export default function Navbar() {
         </button>
       </div>
 
-      <div
-        className={`lg:hidden ${
-          mobileOpen ? "pointer-events-auto" : "pointer-events-none"
-        }`}
-      >
+      {/* Optimized Mobile Menu Drawer with zero redundant margin/padding wrappers */}
+      <div className={`lg:hidden ${mobileOpen ? "pointer-events-auto" : "pointer-events-none"}`}>
         <div
-          className={`fixed inset-0 top-[70px] bg-slate-900/40 backdrop-blur-xs transition-opacity duration-300 ${
+          className={`fixed inset-0 top-[65px] bg-slate-900/40 backdrop-blur-xs transition-opacity duration-300 ${
             mobileOpen ? "opacity-100" : "opacity-0"
           }`}
           onClick={() => setMobileOpen(false)}
         />
 
         <div
-          className={`absolute left-0 right-0 top-full px-4 pt-2 transition-all duration-300 sm:px-6 ${
+          className={`absolute left-0 right-0 top-full transition-all duration-300 ${
             mobileOpen
               ? "translate-y-0 scale-100 opacity-100"
-              : "-translate-y-4 scale-[0.98] opacity-0"
+              : "-translate-y-2 scale-[0.99] opacity-0"
           }`}
         >
-          <div className="mx-auto max-w-[1536px] overflow-hidden rounded-[24px] border border-slate-200 bg-white shadow-2xl">
-            <div className="max-h-[calc(100vh-90px)] overflow-y-auto">
-              <div className="border-b border-slate-100 bg-slate-50 px-5 py-3">
-                <div className="flex flex-wrap items-center gap-2">
-                  <a
-                    href={companyInfo.phoneHref}
-                    className="inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1.5 text-[11px] font-semibold text-cyan-900 transition-colors"
-                  >
-                    <PhoneIcon className="h-3.5 w-3.5 text-cyan-700" />
-                    <span>{companyInfo.phone}</span>
-                  </a>
-                  <a
-                    href={emailHref}
-                    className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold text-slate-700 transition-colors hover:bg-slate-50"
-                  >
-                    <MailIcon className="h-3.5 w-3.5 text-cyan-700" />
-                    <span>{companyInfo.email}</span>
-                  </a>
-                </div>
+          <div className="w-full bg-white border-b border-slate-200 shadow-xl rounded-b-2xl overflow-hidden">
+            <div className="max-h-[calc(100vh-70px)] overflow-y-auto">
+              
+              {/* Quick Info bar */}
+              <div className="bg-slate-50 px-4 py-2.5 border-b border-slate-100 flex items-center justify-between text-[11px]">
+                <a href={companyInfo.phoneHref} className="flex items-center gap-1.5 font-semibold text-slate-700">
+                  <PhoneIcon className="h-3.5 w-3.5 text-cyan-700" />
+                  <span>{companyInfo.phone}</span>
+                </a>
+                <span className="inline-flex items-center gap-1 font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Live Support
+                </span>
               </div>
 
-              <div className="border-b border-slate-100 px-5 pb-4 pt-5">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-cyan-700">
-                      Mobile Navigation
-                    </p>
-                    <h2 className="mt-1 text-xl font-black leading-tight text-slate-900">
-                      Explore LIZA CNC Solutions
-                    </h2>
-                  </div>
-                  <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-800">
-                    Live
-                  </span>
-                </div>
-              </div>
-
-              <div className="grid gap-2.5 px-4 py-4">
+              {/* Navigation Links with individual icons */}
+              <div className="grid gap-1.5 p-3">
                 {navLinks.map((link) => {
                   const isActive = isActiveRoute(pathname, link.href);
+                  const IconComponent = link.icon;
 
                   return (
                     <Link
                       key={link.label}
                       href={link.href}
-                      className={`flex items-center justify-between rounded-xl border px-4 py-3.5 text-sm font-semibold transition-all duration-200 ${
+                      className={`flex items-center justify-between rounded-xl px-3.5 py-3 text-sm font-semibold transition-all ${
                         isActive
-                          ? "border-cyan-300 bg-cyan-50/70 text-cyan-900 font-bold"
-                          : "border-slate-100 bg-slate-50/50 text-slate-800 hover:border-slate-200 hover:bg-slate-100"
+                          ? "bg-cyan-50 text-cyan-900 font-bold border border-cyan-200/60 shadow-2xs"
+                          : "bg-slate-50/60 text-slate-800 hover:bg-slate-100 border border-slate-100"
                       }`}
                     >
-                      <span className="flex items-center gap-3">
-                        <span
-                          className={`h-2 w-2 rounded-full ${
-                            isActive ? "bg-cyan-600" : "bg-slate-400"
-                          }`}
-                        />
+                      <div className="flex items-center gap-3">
+                        <div className={`flex h-8 w-8 items-center justify-center rounded-lg ${isActive ? "bg-cyan-600 text-white" : "bg-white text-slate-600 border border-slate-200"}`}>
+                          <IconComponent className="h-4 w-4" />
+                        </div>
                         <span>{link.label}</span>
-                      </span>
-                      <ArrowUpRightIcon
-                        className={isActive ? "text-cyan-700" : "text-slate-400"}
-                      />
+                      </div>
+                      <ArrowUpRightIcon className={isActive ? "text-cyan-700" : "text-slate-400"} />
                     </Link>
                   );
                 })}
               </div>
 
-              <div className="sticky bottom-0 border-t border-slate-200 bg-white/95 px-4 py-3.5 backdrop-blur-md">
-                <div className="grid grid-cols-2 gap-3">
+              {/* Bottom Sticky Action Buttons */}
+              <div className="sticky bottom-0 border-t border-slate-200 bg-white p-3">
+                <div className="grid grid-cols-2 gap-2.5">
                   <a
                     href={companyInfo.phoneHref}
-                    className="flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 shadow-xs hover:bg-slate-50"
+                    className="flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white py-2.5 text-xs font-bold text-slate-800 shadow-2xs hover:bg-slate-50"
                   >
-                    <PhoneIcon className="text-cyan-700" />
-                    <span>Call</span>
+                    <PhoneIcon className="h-4 w-4 text-cyan-700" />
+                    <span>Call Now</span>
                   </a>
 
                   <a
                     href={companyInfo.whatsappHref}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#25D366] via-[#1ebe5b] to-[#128C7E] px-4 py-2.5 text-sm font-bold text-white shadow-md"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#25D366] to-[#128C7E] py-2.5 text-xs font-bold text-white shadow-md"
                   >
                     <WhatsAppIcon className="h-4 w-4 fill-white text-white" />
                     <span className="text-white">WhatsApp</span>
                   </a>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -244,13 +217,7 @@ export default function Navbar() {
 
 function ArrowUpRightIcon({ className = "" }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      className={`h-3.5 w-3.5 fill-none stroke-current ${className}`}
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg viewBox="0 0 24 24" className={`h-3.5 w-3.5 fill-none stroke-current ${className}`} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
       <path d="M7 17L17 7M7 7h10v10" />
     </svg>
   );
@@ -258,13 +225,7 @@ function ArrowUpRightIcon({ className = "" }) {
 
 function MenuIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-5 w-5 fill-none stroke-current"
-      strokeWidth="2.25"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round">
       <path d="M4 7h16M4 12h16M4 17h16" />
     </svg>
   );
@@ -272,42 +233,63 @@ function MenuIcon() {
 
 function CloseIcon() {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-5 w-5 fill-none stroke-current"
-      strokeWidth="2.25"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round">
       <path d="M6 6l12 12M18 6 6 18" />
     </svg>
   );
 }
 
-function MailIcon({ className = "" }) {
+function HomeIcon({ className = "h-4 w-4" }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      className={`fill-none stroke-current ${className}`}
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M4 6h16v12H4z" />
-      <path d="m4 7 8 6 8-6" />
+    <svg viewBox="0 0 24 24" className={`fill-none stroke-current ${className}`} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      <polyline points="9 22 9 12 15 12 15 22" />
     </svg>
   );
 }
 
-function PhoneIcon({ className = "" }) {
+function PackageIcon({ className = "h-4 w-4" }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      className={`h-4 w-4 fill-none stroke-current ${className}`}
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg viewBox="0 0 24 24" className={`fill-none stroke-current ${className}`} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="16.5" y1="9.4" x2="7.5" y2="4.21" />
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+      <line x1="12" y1="22.08" x2="12" y2="12" />
+    </svg>
+  );
+}
+
+function GalleryIcon({ className = "h-4 w-4" }) {
+  return (
+    <svg viewBox="0 0 24 24" className={`fill-none stroke-current ${className}`} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+      <circle cx="8.5" cy="8.5" r="1.5" />
+      <polyline points="21 15 16 10 5 21" />
+    </svg>
+  );
+}
+
+function InfoIcon({ className = "h-4 w-4" }) {
+  return (
+    <svg viewBox="0 0 24 24" className={`fill-none stroke-current ${className}`} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="16" x2="12" y2="12" />
+      <line x1="12" y1="8" x2="12.01" y2="8" />
+    </svg>
+  );
+}
+
+function ContactIcon({ className = "h-4 w-4" }) {
+  return (
+    <svg viewBox="0 0 24 24" className={`fill-none stroke-current ${className}`} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+  );
+}
+
+function PhoneIcon({ className = "h-4 w-4" }) {
+  return (
+    <svg viewBox="0 0 24 24" className={`fill-none stroke-current ${className}`} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.1 5.18 2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72c.12.88.33 1.75.62 2.58a2 2 0 0 1-.45 2.11L9 10.68a16 16 0 0 0 4.32 4.32l1.27-1.27a2 2 0 0 1 2.11-.45c.83.29 1.7.5 2.58.62A2 2 0 0 1 22 16.92Z" />
     </svg>
   );
