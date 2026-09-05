@@ -185,6 +185,19 @@ async function readExistingEnquiries() {
   }
 }
 
+async function saveEnquiryLocally(enquiry) {
+  try {
+    await fs.mkdir(DATA_DIR, { recursive: true });
+
+    const existing = await readExistingEnquiries();
+    existing.unshift(enquiry);
+
+    await fs.writeFile(DATA_FILE, JSON.stringify(existing, null, 2), "utf8");
+  } catch (error) {
+    console.warn("Enquiry local file save skipped:", error);
+  }
+}
+
 export async function POST(request) {
   try {
     const payload = await request.json();
@@ -212,13 +225,8 @@ export async function POST(request) {
       message: normalizeString(payload.message),
     };
 
-    await fs.mkdir(DATA_DIR, { recursive: true });
-
-    const existing = await readExistingEnquiries();
-    existing.unshift(enquiry);
-
-    await fs.writeFile(DATA_FILE, JSON.stringify(existing, null, 2), "utf8");
     await sendEnquiryEmails(enquiry);
+    await saveEnquiryLocally(enquiry);
 
     return NextResponse.json({
       ok: true,
