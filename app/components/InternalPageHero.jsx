@@ -8,35 +8,32 @@ export default function InternalPageHero({
   secondaryLabel = "View Products",
 }) {
   return (
-    <section className="relative overflow-hidden bg-[#02070d] pb-16 pt-32 sm:pb-20 sm:pt-36">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(8,223,241,0.12),transparent_22%),radial-gradient(circle_at_85%_75%,rgba(163,230,53,0.08),transparent_24%),linear-gradient(180deg,#02070d_0%,#04131d_60%,#031019_100%)]" />
-      <div className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:linear-gradient(to_right,rgba(8,223,241,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(8,223,241,0.2)_1px,transparent_1px)] [background-size:48px_48px]" />
-
+    <section className="relative overflow-hidden bg-gradient-to-b from-slate-100 via-sky-50/40 to-slate-50 pb-10 pt-24 sm:pb-14 sm:pt-28 border-b border-slate-200">
       <div className="relative mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl">
-          <span className="inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-cyan-300">
+          <span className="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.2em] text-cyan-900 shadow-xs">
             {badge}
           </span>
 
-          <h1 className="mt-6 text-4xl font-black leading-[1.02] tracking-[-0.05em] text-white sm:text-5xl lg:text-[4.4rem]">
+          <h1 className="mt-4 text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-[3.25rem]">
             {title}
           </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base font-medium">
             {description}
           </p>
 
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3.5 sm:flex-row">
             <a
-              href="/contact"
+              href="#"
               data-enquiry-trigger="true"
-              className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 px-7 text-sm font-bold text-slate-950 shadow-[0_0_25px_rgba(163,230,53,0.3)] transition-transform duration-300 hover:scale-[1.02]"
+              className="inline-flex min-h-[46px] items-center justify-center rounded-xl bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 px-7 text-sm font-bold text-white shadow-md hover:shadow-lg transition-transform hover:scale-[1.02] cursor-pointer"
             >
-              Get Enquiry
+              <span className="text-white">Get Enquiry</span>
             </a>
             <Link
               href={secondaryHref}
-              className="inline-flex min-h-[52px] items-center justify-center rounded-full border border-cyan-400/30 bg-cyan-400/[0.06] px-7 text-sm font-semibold text-cyan-200 transition-colors duration-300 hover:bg-cyan-400/[0.12]"
+              className="inline-flex min-h-[46px] items-center justify-center rounded-xl border border-slate-300 bg-white px-7 text-sm font-bold text-slate-800 shadow-xs hover:bg-slate-50 hover:border-slate-400"
             >
               {secondaryLabel}
             </Link>

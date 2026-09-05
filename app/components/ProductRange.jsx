@@ -102,19 +102,18 @@ function ProductCard({ product, index }) {
         min-h-[535px]
         flex-col
         overflow-hidden
-        rounded-[28px]
+        rounded-[24px]
         border
-        border-cyan-400/20
-        bg-[linear-gradient(145deg,rgba(4,29,42,0.95),rgba(1,17,28,0.98))]
+        border-slate-200
+        bg-white
         px-5
-        pb-5
-        pt-5
-        shadow-[0_30px_80px_rgba(0,0,0,0.26)]
+        py-5
+        shadow-sm
         transition-all
-        duration-500
-        hover:-translate-y-2
-        hover:border-cyan-300/45
-        hover:shadow-[0_35px_100px_rgba(0,210,255,0.12)]
+        duration-300
+        hover:-translate-y-1.5
+        hover:border-cyan-400
+        hover:shadow-xl
         sm:px-6
         sm:pb-6
       "
@@ -129,7 +128,7 @@ function ProductCard({ product, index }) {
           h-[260px]
           w-[260px]
           rounded-full
-          bg-cyan-400/10
+          bg-slate-50
           blur-[80px]
           opacity-0
           transition-opacity
@@ -148,7 +147,7 @@ function ProductCard({ product, index }) {
           w-[360px]
           -translate-x-1/2
           rounded-full
-          bg-lime-400/[0.04]
+          bg-slate-50
           blur-[90px]
         "
       />
@@ -159,25 +158,25 @@ function ProductCard({ product, index }) {
           relative
           z-20
           flex
-          h-[62px]
-          w-[62px]
+          h-[56px]
+          w-[56px]
           items-center
           justify-center
-          rounded-full
+          rounded-2xl
           border
-          border-cyan-400/40
-          bg-[#031d2a]/90
-          shadow-[0_0_30px_rgba(0,220,255,0.05)]
+          border-cyan-200
+          bg-cyan-50
+          shadow-xs
           transition-all
-          duration-500
-          group-hover:border-cyan-300/70
-          group-hover:shadow-[0_0_35px_rgba(0,220,255,0.12)]
+          duration-300
+          group-hover:border-cyan-400
+          group-hover:bg-cyan-100
         "
       >
         <Icon
-          size={28}
-          strokeWidth={1.7}
-          className="text-[#07dff0]"
+          size={26}
+          strokeWidth={1.8}
+          className="text-cyan-700"
         />
       </div>
 
@@ -249,8 +248,8 @@ function ProductCard({ product, index }) {
           className="
             text-[24px]
             font-black
-            tracking-[-0.035em]
-            text-white
+            tracking-tight
+            text-slate-900
             sm:text-[26px]
           "
         >
@@ -258,18 +257,18 @@ function ProductCard({ product, index }) {
         </h3>
 
         <div className="mt-2 flex items-center gap-1">
-          <span className="h-[3px] w-[25px] rounded-full bg-lime-400" />
-          <span className="h-[3px] w-[15px] rounded-full bg-cyan-400" />
+          <span className="h-[3px] w-[25px] rounded-full bg-emerald-500" />
+          <span className="h-[3px] w-[15px] rounded-full bg-cyan-500" />
         </div>
 
         <p
           className="
-            mt-4
+            mt-3.5
             max-w-[95%]
             text-[14px]
             font-medium
             leading-[1.65]
-            text-slate-300/90
+            text-slate-600
             sm:text-[15px]
           "
         >
@@ -299,24 +298,24 @@ function ProductCard({ product, index }) {
                   gap-2
                   rounded-xl
                   border
-                  border-white/[0.09]
-                  bg-white/[0.025]
+                  border-slate-200
+                  bg-slate-50
                   px-2
                   text-center
                   text-[12px]
                   font-semibold
-                  text-slate-100
+                  text-slate-800
                   transition-all
-                  duration-300
-                  hover:border-lime-400/30
-                  hover:bg-lime-400/[0.04]
+                  duration-200
+                  hover:border-emerald-300
+                  hover:bg-emerald-50
                   sm:text-[12.5px]
                 "
               >
                 <FeatureIcon
-                  size={17}
+                  size={16}
                   strokeWidth={1.8}
-                  className="shrink-0 text-lime-400"
+                  className="shrink-0 text-emerald-600"
                 />
 
                 <span>{feature.label}</span>
@@ -328,14 +327,15 @@ function ProductCard({ product, index }) {
         <div className="mt-5 flex flex-col gap-3 sm:flex-row">
           <Link
             href={`/products/${product.slug}`}
-            className="inline-flex min-h-[46px] items-center justify-center rounded-full bg-gradient-to-r from-lime-400 to-teal-400 px-5 text-sm font-bold text-slate-950"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 px-5 text-sm font-bold text-white shadow-sm hover:shadow-md transition-all"
           >
-            View Details
+            <span className="text-white">View Details</span>
           </Link>
           <a
-            href="/contact"
+            href="#"
             data-enquiry-trigger="true"
-            className="inline-flex min-h-[46px] items-center justify-center rounded-full border border-white/10 px-5 text-sm font-semibold text-slate-200"
+            data-machine-type={product.title}
+            className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-300 bg-white px-5 text-sm font-bold text-slate-800 shadow-xs hover:bg-slate-50 hover:border-slate-400 cursor-pointer"
           >
             Get Enquiry
           </a>
@@ -364,36 +364,15 @@ export default function ProductRange() {
         relative
         isolate
         overflow-hidden
-        bg-[#010e17]
-        py-20
-        sm:py-24
-        lg:py-[105px]
+        bg-white
+        py-12
+        sm:py-8
+        border-b
+        border-slate-200
       "
     >
       {/* Main background */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          -z-20
-          bg-[radial-gradient(circle_at_76%_8%,rgba(0,220,255,0.06),transparent_26%),radial-gradient(circle_at_13%_72%,rgba(87,255,0,0.035),transparent_28%),linear-gradient(180deg,#010e17_0%,#01131f_50%,#010c14_100%)]
-        "
-      />
-
-      {/* Grain / subtle dots */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          -z-10
-          opacity-[0.07]
-          [background-image:radial-gradient(circle,rgba(0,230,255,0.9)_1px,transparent_1px)]
-          [background-size:34px_34px]
-          [mask-image:linear-gradient(to_bottom,transparent,black_30%,black_80%,transparent)]
-        "
-      />
+      <div className="pointer-events-none absolute inset-0 -z-20 bg-slate-50" />
 
       <div className="mx-auto w-full max-w-[1540px] px-4 sm:px-6 lg:px-8">
         {/* Top */}
@@ -412,23 +391,21 @@ export default function ProductRange() {
               className="
                 inline-flex
                 items-center
-                gap-3
+                gap-2.5
                 rounded-full
                 border
-                border-cyan-400/25
-                bg-[#031823]/75
+                border-cyan-200
+                bg-cyan-50
                 px-4
-                py-2.5
-                backdrop-blur-xl
+                py-2
               "
             >
               <span
                 className="
-                  h-2.5
-                  w-2.5
+                  h-2
+                  w-2
                   rounded-full
-                  bg-lime-400
-                  shadow-[0_0_15px_rgba(163,255,0,0.9)]
+                  bg-emerald-500
                 "
               />
 
@@ -438,7 +415,7 @@ export default function ProductRange() {
                   font-bold
                   uppercase
                   tracking-[0.22em]
-                  text-cyan-300
+                  text-cyan-900
                   sm:text-[12px]
                 "
               >
@@ -448,15 +425,15 @@ export default function ProductRange() {
 
             <h2
               className="
-                mt-7
+                mt-6
                 max-w-[850px]
-                text-[42px]
+                text-[38px]
                 font-black
-                leading-[0.98]
-                tracking-[-0.055em]
-                text-white
-                sm:text-[54px]
-                lg:text-[64px]
+                leading-[1.05]
+                tracking-tight
+                text-slate-900
+                sm:text-[50px]
+                lg:text-[58px]
               "
             >
               Solutions Built for
@@ -464,7 +441,10 @@ export default function ProductRange() {
                 className="
                   mt-1
                   block
-                  bg-[linear-gradient(90deg,#08dff1_0%,#21e8d8_35%,#a2f600_100%)]
+                  bg-gradient-to-r
+                  from-cyan-700
+                  via-teal-600
+                  to-emerald-700
                   bg-clip-text
                   text-transparent
                 "
@@ -475,14 +455,13 @@ export default function ProductRange() {
 
             <p
               className="
-                mt-6
+                mt-5
                 max-w-[760px]
                 text-[16px]
                 font-medium
-                leading-[1.55]
-                text-slate-300
+                leading-[1.6]
+                text-slate-600
                 sm:text-[17px]
-                lg:text-[18px]
               "
             >
               LIZA offers a complete range of CNC solutions — CNC Router
@@ -491,7 +470,7 @@ export default function ProductRange() {
               excellence.
             </p>
 
-            <div className="mt-7 h-[3px] w-[42px] rounded-full bg-cyan-400" />
+            <div className="mt-6 h-[3px] w-[42px] rounded-full bg-cyan-600" />
           </div>
 
           {/* Right CTA panel */}
@@ -499,7 +478,7 @@ export default function ProductRange() {
             className="
               relative
               flex
-              min-h-[250px]
+              min-h-[50px]
               items-center
               justify-center
               lg:justify-end

@@ -16,12 +16,12 @@ const strengths = [
   {
     title: "Application-driven support",
     description:
-      "Buyers often choose based on the work they do, so the site now supports machine decisions through use cases and materials.",
+      "Buyers often choose based on the work they do, so the site supports machine decisions through use cases and materials.",
   },
   {
     title: "Lead-first conversion flow",
     description:
-      "With the enquiry popup in place, visitors now have a direct path to request quotes and machine consultation.",
+      "With the enquiry popup in place, visitors have a direct path to request quotes and machine consultation.",
   },
 ];
 
@@ -30,25 +30,23 @@ export default function AboutPage() {
     <main>
       <InternalPageHero
         badge="About LIZA"
-        title="A CNC router website should feel credible, clear, and production-ready."
-        description="This page explains the company direction, the machine categories, and the support-first approach behind the product presentation."
-        secondaryHref="/contact"
-        secondaryLabel="Contact Team"
+        title="A CNC router website built for credibility, clarity, and production-fit."
+        description="This page explains the company direction, machine categories, and the support-first approach behind our product presentation."
+        secondaryHref="/products"
+        secondaryLabel="Explore Machines"
       />
 
-      <section className="relative overflow-hidden bg-[#03111a] py-20 sm:py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(8,223,241,0.08),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(163,230,53,0.08),transparent_24%)]" />
-
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 border-b border-slate-200">
         <div className="relative mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-start">
             <div>
-              <span className="inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-cyan-300">
+              <span className="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-cyan-900">
                 Company Direction
               </span>
-              <h2 className="mt-6 text-4xl font-black leading-[1.03] tracking-[-0.045em] text-white sm:text-5xl">
+              <h2 className="mt-5 text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl">
                 Positioned for real workshop and machine buyers.
               </h2>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
+              <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600 font-medium">
                 {companyInfo.name} is presented here as a CNC router-focused
                 business serving routing, carving, engraving, and related
                 production needs. The website is structured to support trust,
@@ -56,25 +54,25 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="rounded-[30px] border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl">
-              <p className="text-sm font-bold uppercase tracking-[0.2em] text-lime-300">
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-xs">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-800">
                 Current Product Categories
               </p>
-              <div className="mt-5 space-y-4">
+              <div className="mt-4 space-y-3">
                 {productCatalog.map((product, index) => (
                   <div
                     key={product.slug}
-                    className="rounded-2xl border border-white/10 bg-[#061923]/80 px-4 py-4"
+                    className="rounded-xl border border-slate-200 bg-white px-4 py-3.5 shadow-xs"
                   >
                     <div className="flex items-center justify-between gap-4">
-                      <h3 className="text-base font-bold text-white">
+                      <h3 className="text-base font-bold text-slate-900">
                         {product.title}
                       </h3>
-                      <span className="text-xs font-black text-cyan-300">
+                      <span className="text-xs font-black text-cyan-700">
                         0{index + 1}
                       </span>
                     </div>
-                    <p className="mt-2 text-sm leading-6 text-slate-300">
+                    <p className="mt-1 text-xs leading-relaxed text-slate-600 font-medium">
                       {product.description}
                     </p>
                   </div>
@@ -87,13 +85,13 @@ export default function AboutPage() {
             {strengths.map((item) => (
               <article
                 key={item.title}
-                className="rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(5,23,33,0.96),rgba(3,15,22,0.98))] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.24)]"
+                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
               >
-                <div className="h-1.5 w-12 rounded-full bg-gradient-to-r from-lime-400 to-cyan-400" />
-                <h3 className="mt-5 text-2xl font-black text-white">
+                <div className="h-1.5 w-12 rounded-full bg-gradient-to-r from-cyan-600 to-emerald-600" />
+                <h3 className="mt-4 text-xl font-bold text-slate-900">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-slate-300">
+                <p className="mt-2 text-xs leading-relaxed text-slate-600 font-medium">
                   {item.description}
                 </p>
               </article>

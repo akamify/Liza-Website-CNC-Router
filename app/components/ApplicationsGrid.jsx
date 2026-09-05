@@ -50,63 +50,63 @@ export default function ApplicationsGrid() {
   return (
     <section
       id="applications"
-      className="relative overflow-hidden bg-[#020c13] py-20 sm:py-24"
+      className="relative overflow-hidden bg-white py-10 sm:py-8 border-b border-slate-200"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(8,223,241,0.08),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(163,230,53,0.08),transparent_26%)]" />
-
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
-          <div className="lg:sticky lg:top-28">
-            <span className="inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-cyan-300">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
+          <div className="lg:sticky lg:top-24">
+            <span className="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-3.5 py-1 text-xs font-bold uppercase tracking-[0.2em] text-cyan-900">
               Industries & Applications
             </span>
 
-            <h2 className="mt-6 text-4xl font-black leading-[1.02] tracking-[-0.045em] text-white sm:text-5xl">
-              Where this CNC router creates the most value.
+            <h2 className="mt-4 text-2xl font-black leading-tight tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+              Where this CNC router creates maximum value.
             </h2>
 
-            <p className="mt-5 max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
-              Leading CNC router brands highlight applications and industries
-              early because buyers often identify themselves by job type first,
-              then compare machine features later.
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-600 font-medium">
+              Explore how our CNC systems power sign making, custom furniture production, architectural panels, and acrylic fabrication with high efficiency and low maintenance.
             </p>
 
-            <div className="mt-8 rounded-[28px] border border-cyan-400/15 bg-[#051722]/80 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-xl">
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-lime-300">
-                Why This Section Matters
+            <a
+              href="#"
+              data-enquiry-trigger="true"
+              className="mt-5 inline-flex min-h-[46px] items-center justify-center rounded-xl bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 px-6 text-sm font-bold text-white shadow-md hover:shadow-lg transition-transform hover:scale-[1.02]"
+            >
+              <span className="text-white">Share Your Application</span>
+            </a>
+
+            <div className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4 shadow-xs">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-800">
+                Production Advantage
               </p>
-              <p className="mt-3 text-sm leading-6 text-slate-300">
-                It helps visitors quickly answer: "Can this machine handle my
-                kind of work?" That makes the page feel more relevant and more
-                conversion-focused.
+              <p className="mt-1.5 text-xs leading-relaxed text-slate-600 font-medium">
+                Optimized toolpaths, fast cutting speeds, and zero material wastage across solid wood, MDF, acrylic, and composite sheets.
               </p>
             </div>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-3.5 sm:grid-cols-2">
             {applications.map((item, index) => {
               const Icon = item.icon;
 
               return (
                 <article
                   key={item.title}
-                  className={`group rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(5,22,31,0.96),rgba(3,14,22,0.98))] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.24)] transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/25 ${
-                    index === 0 ? "sm:translate-y-10" : ""
-                  }`}
+                  className="group rounded-xl border border-slate-200 bg-white p-4 shadow-xs transition-all duration-200 hover:border-cyan-400 hover:shadow-md"
                 >
                   <div className="flex items-center justify-between gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-300">
-                      <Icon size={21} strokeWidth={2} />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-cyan-200 bg-cyan-50 text-cyan-700">
+                      <Icon size={18} strokeWidth={2} />
                     </div>
-                    <span className="text-sm font-black text-slate-500">
+                    <span className="text-xs font-black text-slate-400">
                       0{index + 1}
                     </span>
                   </div>
 
-                  <h3 className="mt-6 text-2xl font-black text-white">
+                  <h3 className="mt-3 text-base font-bold text-slate-900">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-300">
+                  <p className="mt-1.5 text-xs leading-relaxed text-slate-500 font-medium">
                     {item.description}
                   </p>
                 </article>

@@ -22,52 +22,45 @@ export default function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="relative overflow-hidden bg-[#021018] py-20 sm:py-24"
+      className="relative overflow-hidden bg-slate-50 py-10 sm:py-8 border-b border-slate-200"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(8,223,241,0.09),transparent_25%),radial-gradient(circle_at_90%_80%,rgba(163,230,53,0.08),transparent_24%)]" />
-
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-cyan-300">
-              Customer Trust
-            </span>
-            <h2 className="mt-6 text-4xl font-black leading-[1.02] tracking-[-0.045em] text-white sm:text-5xl">
-              Add proof that the machine works in real business use.
+            <h2 className="text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl">
+              Proven results in real workshop production.
             </h2>
+          <p className="max-w-xl text-base leading-relaxed text-slate-600 font-medium">
+            Strong CNC websites add customer stories because buyers want confidence in support, output quality, and daily reliability.
+          </p>
           </div>
 
-          <p className="max-w-xl text-base leading-7 text-slate-300">
-            Strong CNC websites often add testimonials or customer stories
-            because buyers want confidence in support, output quality, and daily
-            reliability.
-          </p>
         </div>
 
         <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {testimonials.map((item) => (
             <article
               key={`${item.name}-${item.role}`}
-              className="rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(5,22,31,0.96),rgba(3,15,22,0.98))] p-6 shadow-[0_20px_60px_rgba(0,0,0,0.24)]"
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
             >
               <div className="flex items-center justify-between">
-                <div className="flex gap-1 text-lime-300">
+                <div className="flex gap-1 text-amber-500">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <Star key={index} size={16} fill="currentColor" />
                   ))}
                 </div>
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-300">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-200 bg-cyan-50 text-cyan-700">
                   <Quote size={18} />
                 </div>
               </div>
 
-              <p className="mt-6 text-base leading-7 text-slate-200">
+              <p className="mt-5 text-sm leading-relaxed text-slate-700 font-medium">
                 "{item.text}"
               </p>
 
-              <div className="mt-7 border-t border-white/10 pt-5">
-                <h3 className="text-base font-bold text-white">{item.name}</h3>
-                <p className="mt-1 text-sm text-slate-400">{item.role}</p>
+              <div className="mt-6 border-t border-slate-100 pt-4">
+                <h3 className="text-base font-bold text-slate-900">{item.name}</h3>
+                <p className="mt-0.5 text-xs text-slate-500 font-medium">{item.role}</p>
               </div>
             </article>
           ))}

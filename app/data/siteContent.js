@@ -6,7 +6,7 @@ export const companyInfo = {
   whatsappHref:
     "https://wa.me/919365804285?text=Hello%20LIZA%2C%20I%20want%20details%20about%20your%20CNC%20router%20machines.",
   website: "www.lizacnc.com",
-  email: "tafadarbadrulislam@gmail.com",
+  email: process.env.NEXT_PUBLIC_COMPANY_EMAIL || "tafadarbadrulislam@gmail.com",
   location: "CNC router solutions for workshops, fabricators, signage, and wood manufacturing businesses.",
 };
 

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import InternalPageHero from "../components/InternalPageHero";
+import ProductBannerSlider from "../components/ProductBannerSlider";
 import { productCatalog } from "../data/siteContent";
 
 export const metadata = {
@@ -14,44 +15,43 @@ export default function ProductsPage() {
     <main>
       <InternalPageHero
         badge="Products"
-        title="Explore the current machine lineup in one focused place."
+        title="Explore the current machine lineup in one place."
         description="This products page gives the site a proper catalog structure and creates room for deeper detail pages for each machine."
         secondaryHref="/gallery"
         secondaryLabel="View Gallery"
       />
 
-      <section className="relative overflow-hidden bg-[#03111a] py-20 sm:py-24">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(8,223,241,0.08),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(163,230,53,0.08),transparent_24%)]" />
-
+      <section className="relative overflow-hidden bg-white py-16 sm:py-20 border-b border-slate-200">
         <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
           <div className="grid gap-6 lg:grid-cols-3">
             {productCatalog.map((product) => (
               <article
                 key={product.slug}
-                className="overflow-hidden rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(5,22,31,0.96),rgba(3,14,22,0.98))] shadow-[0_20px_60px_rgba(0,0,0,0.24)]"
+                className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs transition-all duration-300 hover:shadow-md hover:border-slate-300"
               >
-                <div className="relative aspect-[4/3] overflow-hidden border-b border-white/10 bg-[#08151e]">
+                <div className="relative aspect-[4/3] overflow-hidden border-b border-slate-200 bg-slate-100">
                   <Image
                     src={product.image}
                     alt={product.title}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-cover"
                   />
                 </div>
 
                 <div className="p-6">
-                  <h2 className="text-2xl font-black text-white">
+                  <h2 className="text-xl font-bold text-slate-900">
                     {product.title}
                   </h2>
-                  <p className="mt-3 text-sm leading-6 text-slate-300">
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600 font-medium">
                     {product.description}
                   </p>
 
-                  <div className="mt-5 flex flex-wrap gap-2">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     {product.featureLabels.map((label) => (
                       <span
                         key={label}
-                        className="rounded-full border border-cyan-400/15 bg-cyan-400/[0.06] px-3 py-1 text-xs font-semibold text-cyan-200"
+                        className="rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1 text-xs font-semibold text-cyan-900"
                       >
                         {label}
                       </span>
@@ -61,14 +61,15 @@ export default function ProductsPage() {
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                     <Link
                       href={`/products/${product.slug}`}
-                      className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-gradient-to-r from-lime-400 to-teal-400 px-6 text-sm font-bold text-slate-950"
+                      className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 px-5 text-sm font-bold text-white shadow-sm hover:shadow-md transition-all"
                     >
-                      View Details
+                      <span className="text-white">View Details</span>
                     </Link>
                     <a
-                      href="/contact"
+                      href="#"
                       data-enquiry-trigger="true"
-                      className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/10 px-6 text-sm font-semibold text-slate-200"
+                      data-machine-type={product.title}
+                      className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-300 bg-white px-5 text-sm font-bold text-slate-800 shadow-xs hover:bg-slate-50 hover:border-slate-400 cursor-pointer"
                     >
                       Get Enquiry
                     </a>
@@ -79,6 +80,8 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
+
+      <ProductBannerSlider />
     </main>
   );
 }
