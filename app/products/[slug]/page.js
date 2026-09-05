@@ -10,8 +10,9 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }) {
-  const product = productCatalog.find((item) => item.slug === params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const product = productCatalog.find((item) => item.slug === slug);
 
   if (!product) {
     return {
@@ -25,8 +26,9 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function ProductDetailPage({ params }) {
-  const product = productCatalog.find((item) => item.slug === params.slug);
+export default async function ProductDetailPage({ params }) {
+  const { slug } = await params;
+  const product = productCatalog.find((item) => item.slug === slug);
 
   if (!product) {
     notFound();
