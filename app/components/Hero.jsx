@@ -43,7 +43,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative mt-4 lg:mt-6 w-full overflow-hidden bg-slate-50/50 pb-5 pt-12 sm:pt-10"
+      className="relative mt-4 lg:mt-6 w-full overflow-hidden bg-slate-50/50 pt-12 sm:pt-10"
     >
       <div className="relative z-10 mx-auto max-w-[1536px] pt-1">
         {/* Added items-start to prevent grid items from stretching unequal heights */}
@@ -172,7 +172,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="mt-12 border-t border-slate-200/80 bg-white/60 py-6 backdrop-blur-md">
+      <div className="mt-10 border-t border-slate-200/80 bg-white/60 py-6 backdrop-blur-md">
         <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_3%,black_97%,transparent)]">
           <div className="animate-marquee-smooth flex gap-4 py-2 px-2">
             {doubleBanners.map((item, index) => (
