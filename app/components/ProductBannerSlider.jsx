@@ -117,19 +117,7 @@ export default function ProductBannerSlider() {
                   </p>
                 </div>
 
-                <div className="mt-3">
-                  {/* Tag Pills */}
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {banner.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold text-slate-700"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
+                <div className="">
                   {/* Direct Enquiry Button */}
                   <button
                     type="button"
