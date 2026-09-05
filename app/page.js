@@ -14,7 +14,6 @@ export default function HomePage() {
   return (
     <main>
       <Hero />
-      <QuickEnquirySection />
       <ProductRange />
       {/* <ProductBannerSlider /> */}
       <MachineSpotlight />
@@ -23,6 +22,7 @@ export default function HomePage() {
       <ServiceWorkflow />
       <TestimonialsSection />
       <FaqSection />
+      <QuickEnquirySection />
     </main>
   );
 }
