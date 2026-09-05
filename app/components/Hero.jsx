@@ -1,4 +1,8 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import { productCatalog } from "../data/siteContent";
 
 const highlights = [
   {
@@ -24,10 +28,31 @@ const highlights = [
 ];
 
 export default function Hero() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Auto rotation across productCatalog items
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % productCatalog.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  const handleNextProduct = () => {
+    setActiveIndex((prev) => (prev + 1) % productCatalog.length);
+  };
+
+  const currentProduct = productCatalog[activeIndex] || productCatalog[0];
+  const doubleBanners = [...productCatalog, ...productCatalog];
+
   return (
     <section
       id="home"
-      className="relative mt-16 sm:mt-16 lg:mt-16 isolate min-h-[88vh] w-full overflow-hidden bg-gradient-to-b from-slate-100 via-sky-50/30 to-slate-50 text-slate-900 select-none py-10 lg:py-14"
+      className="relative mt-16 lg:mt-10 isolate min-h-[92vh] w-full overflow-hidden bg-gradient-to-b from-slate-100 via-sky-50/30 to-slate-50 text-slate-900 select-none pt-10 lg:pt-14"
     >
       {/* Background Image Overlay */}
       <div className="absolute inset-0 -z-30 opacity-10 mix-blend-multiply pointer-events-none">
@@ -47,19 +72,24 @@ export default function Hero() {
       <div className="relative z-10 mx-auto grid max-w-[1536px] grid-cols-1 px-4 sm:px-6 lg:grid-cols-12 lg:items-center lg:gap-8 lg:px-8 xl:gap-12">
         {/* LEFT COLUMN - BRAND & CTA */}
         <div className="relative z-30 flex flex-col justify-center lg:col-span-7 xl:col-span-6">
-          {/* Status Badge */}
-          <div className="inline-flex max-w-fit items-center gap-2.5 rounded-full border border-cyan-300 bg-cyan-50/90 py-1.5 pl-3 pr-4 text-xs font-semibold text-cyan-900 shadow-xs backdrop-blur-md">
+          {/* Interactive Next-Gen Badge -> Clicking it rotates to next product in productCatalog */}
+          <button
+            type="button"
+            onClick={handleNextProduct}
+            className="group inline-flex max-w-fit items-center gap-2.5 rounded-full border border-cyan-300 bg-cyan-50/90 py-1.5 pl-3 pr-4 text-xs font-semibold text-cyan-900 shadow-xs backdrop-blur-md transition-all hover:bg-cyan-100 hover:border-cyan-400 active:scale-95 cursor-pointer"
+            title="Click to view next product"
+          >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-600" />
             </span>
 
             <span className="tracking-wide text-cyan-950 font-bold">
-              Next-Gen Industrial CNC Systems
+              Next-Gen: {currentProduct.shortTitle || currentProduct.title}
             </span>
 
-            <ChevronSmallIcon />
-          </div>
+            <ChevronSmallIcon className="transition-transform group-hover:translate-x-1" />
+          </button>
 
           {/* Headline */}
           <h1 className="mt-5 text-4xl font-black tracking-tight text-slate-900 sm:text-5xl lg:text-5xl xl:text-6xl leading-[1.1]">
@@ -79,16 +109,17 @@ export default function Hero() {
             <a
               href="#"
               data-enquiry-trigger="true"
+              data-machine-type={currentProduct.title}
               className="group relative inline-flex h-13 items-center justify-center gap-3 overflow-hidden rounded-xl bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 px-8 text-sm font-bold text-white shadow-lg shadow-cyan-600/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-cyan-600/30 active:scale-95 cursor-pointer"
             >
               <span className="relative z-10 tracking-wide text-white">Get CNC Quote</span>
               <span className="pointer-events-none absolute inset-y-0 -left-[50%] w-[40%] -skew-x-12 bg-white/30 blur-md transition-all duration-700 group-hover:left-[130%]" />
             </a>
             <a
-              href="#products"
+              href="/products"
               className="inline-flex h-13 items-center justify-center rounded-xl border border-slate-300 bg-white px-8 text-sm font-bold text-slate-800 shadow-xs transition-all duration-300 hover:border-cyan-500 hover:bg-slate-50 hover:text-cyan-800"
             >
-              View Machines
+              View All Lineup
             </a>
           </div>
 
@@ -118,64 +149,138 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* RIGHT COLUMN — MACHINE SHOWCASE & HUD OVERLAYS */}
-        <div className="relative z-20 mt-10 flex items-center justify-center lg:col-span-5 lg:mt-0 xl:col-span-6">
-          <div className="relative w-full max-w-lg lg:max-w-none">
-            {/* Machine Back Glow */}
-            <div className="pointer-events-none absolute left-1/2 top-[48%] h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/15 blur-2xl" />
+        {/* RIGHT COLUMN — SHOWCASE POPULATED DIRECTLY FROM productCatalog */}
+        <div
+          className="relative z-20 mt-10 flex flex-col items-center justify-center lg:col-span-5 lg:mt-0 xl:col-span-6"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {/* MAIN PRODUCT SHOWCASE CARD */}
+          <div className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-slate-200 bg-white p-4 sm:p-6 shadow-2xl transition-all duration-500">
+            {/* Background Glow */}
+            <div className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/10 blur-2xl" />
 
-            {/* Pedestal Glow & Base Platform */}
-            <div className="pointer-events-none absolute bottom-2 left-1/2 h-20 w-[88%] -translate-x-1/2 rounded-[100%] border border-cyan-300/30 bg-cyan-100/40 blur-xs" />
-
-            {/* MAIN MACHINE IMAGE */}
-            <img
-              src="/herocnc.png"
-              alt="Heavy Duty CNC Machine Router Showcase"
-              fetchPriority="high"
-              className="relative z-10 h-auto w-full max-h-[480px] object-contain drop-shadow-xl transition-transform duration-700 hover:scale-[1.02]"
-            />
-
-            {/* HUD CARD 1: CONTROL SYSTEM */}
-            <div className="absolute top-4 -right-2 z-20 hidden items-center gap-3 rounded-xl border border-cyan-200 bg-white/95 p-3 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-cyan-400 sm:flex">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-cyan-200 bg-cyan-100 text-cyan-800">
-                <ChipIcon />
-              </div>
-
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-wider text-cyan-800">
-                  Control System
-                </p>
-                <p className="text-xs font-bold text-slate-900 tracking-wide">
-                  DSP / Syntec Controller
-                </p>
-              </div>
-
-              <span className="absolute right-2 top-2 flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-500 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-600" />
-              </span>
+            {/* Product Image Frame with Smooth Fade Transition */}
+            <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl border border-slate-100 bg-slate-950">
+              {productCatalog.map((prod, idx) => (
+                <div
+                  key={prod.slug}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                    activeIndex === idx ? "opacity-100 z-10" : "opacity-0 z-0"
+                  }`}
+                >
+                  <Image
+                    src={prod.image}
+                    alt={prod.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                </div>
+              ))}
             </div>
 
-            {/* HUD CARD 2: SPINDLE POWER */}
-            <div className="absolute bottom-8 -left-4 z-20 hidden items-center gap-3 rounded-xl border border-emerald-200 bg-white/95 p-3 shadow-xl backdrop-blur-md transition-all duration-300 hover:border-emerald-400 sm:flex">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-emerald-200 bg-emerald-100 text-emerald-800">
-                <BoltIcon />
+            {/* Active Machine Details from productCatalog */}
+            <div className="flex flex-col gap-2 mt-2">
+
+              <h3 className="text-xl font-black text-slate-900 tracking-tight">
+                {currentProduct.title}
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed font-medium line-clamp-2">
+                {currentProduct.description}
+              </p>
+
+              {/* Specs Badges dynamically pulled from productCatalog.specs */}
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                {currentProduct.specs.slice(0, 2).map((spec) => (
+                  <div
+                    key={spec.label}
+                    className="flex items-center gap-2 rounded-xl border border-cyan-100 bg-cyan-50/70 p-2 text-xs font-semibold text-slate-800"
+                  >
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-cyan-200 bg-cyan-100 text-cyan-800">
+                      <ChipIcon />
+                    </div>
+                    <div className="overflow-hidden">
+                      <p className="text-[9px] font-bold uppercase tracking-wider text-cyan-800 truncate">
+                        {spec.label}
+                      </p>
+                      <p className="text-[11px] font-bold text-slate-900 truncate">
+                        {spec.value}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
 
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-wider text-emerald-800">
-                  Spindle Power
-                </p>
-                <p className="text-xs font-bold text-slate-900 tracking-wide">
-                  6.0KW Air Cooled
-                </p>
-              </div>
-
-              <span className="absolute right-2 top-2 flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-600" />
-              </span>
+              {/* Action Button for Active Product */}
+              <button
+                type="button"
+                data-enquiry-trigger="true"
+                data-machine-type={currentProduct.title}
+                className="mt-3 w-full inline-flex min-h-[44px] items-center justify-center rounded-xl bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 px-6 text-xs font-bold text-white shadow-md hover:shadow-lg transition-all hover:scale-[1.01] active:scale-95 cursor-pointer"
+              >
+                <span className="text-white">
+                  Get Quote for {currentProduct.shortTitle || currentProduct.title}
+                </span>
+              </button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* HERO PRODUCT BANNERS - AUTO-SCROLLING TICKER CAROUSEL PULLED FROM productCatalog */}
+      <div className="mt-12 border-t border-slate-200/80 bg-white/60 py-6 backdrop-blur-md">
+        {/* Marquee Container with Gradient edge masks */}
+        <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_3%,black_97%,transparent)]">
+          <div className="animate-marquee-smooth flex gap-4 py-2 px-2">
+            {doubleBanners.map((item, index) => (
+              <div
+                key={`${item.slug}-${index}`}
+                className="group relative flex w-[320px] sm:w-[360px] shrink-0 items-center gap-3.5 rounded-2xl border border-slate-200 bg-white p-3 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-400 hover:shadow-md"
+              >
+                {/* Banner Thumbnail */}
+                <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-slate-100 bg-slate-900">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="80px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
+                </div>
+
+                {/* Banner Text Content */}
+                <div className="flex flex-1 flex-col justify-between overflow-hidden">
+                  <div>
+                    <div className="flex items-center justify-between gap-1">
+                      <span className="rounded-md border border-cyan-200 bg-cyan-50 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-cyan-800">
+                        {item.featureLabels[0] || "CNC Lineup"}
+                      </span>
+                    </div>
+
+                    <h3 className="mt-1 text-xs sm:text-sm font-bold text-slate-900 truncate group-hover:text-cyan-700 transition-colors">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-0.5 text-[10px] text-slate-500 font-medium line-clamp-1">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  {/* Enquiry trigger */}
+                  <button
+                    type="button"
+                    data-enquiry-trigger="true"
+                    data-machine-type={item.title}
+                    className="mt-2 inline-flex h-7 items-center justify-center rounded-lg bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 px-3 text-[11px] font-bold text-white shadow-2xs hover:opacity-95 transition-transform active:scale-95 cursor-pointer"
+                  >
+                    <span className="text-white">Enquire Now</span>
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -217,9 +322,9 @@ function SupportIcon() {
   );
 }
 
-function ChevronSmallIcon() {
+function ChevronSmallIcon({ className = "" }) {
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth="2">
+    <svg viewBox="0 0 24 24" className={`h-4 w-4 stroke-current ${className}`} fill="none" strokeWidth="2">
       <path d="M9 18l6-6-6-6" />
     </svg>
   );

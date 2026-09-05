@@ -122,7 +122,7 @@ export default function QuickEnquirySection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-slate-50 py-12 sm:py-16 border-b border-slate-200">
+    <section className="relative overflow-hidden bg-slate-50 py-12 sm:py-10 border-b border-slate-200">
       <div className="relative mx-auto max-w-[1340px] px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 sm:p-10 shadow-xl">
           {/* Header */}
@@ -142,7 +142,7 @@ export default function QuickEnquirySection() {
             <div className="flex items-center gap-2 shrink-0">
               {[
                 "Fast Callback",
-                "Direct Email Copy",
+                "Direct Email Support",
                 "Free Advice",
               ].map((item) => (
                 <span

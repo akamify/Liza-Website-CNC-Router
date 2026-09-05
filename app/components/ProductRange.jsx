@@ -107,8 +107,7 @@ function ProductCard({ product, index }) {
         border-slate-200
         bg-white
         px-5
-        pb-5
-        pt-5
+        py-5
         shadow-sm
         transition-all
         duration-300
@@ -366,8 +365,8 @@ export default function ProductRange() {
         isolate
         overflow-hidden
         bg-white
-        py-16
-        sm:py-20
+        py-12
+        sm:py-8
         border-b
         border-slate-200
       "
@@ -479,7 +478,7 @@ export default function ProductRange() {
             className="
               relative
               flex
-              min-h-[250px]
+              min-h-[50px]
               items-center
               justify-center
               lg:justify-end

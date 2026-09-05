@@ -51,6 +51,7 @@ export default function ProductDetailPage({ params }) {
                   src={product.image}
                   alt={product.title}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 55vw"
                   className="object-cover"
                 />
               </div>

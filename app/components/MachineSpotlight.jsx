@@ -28,7 +28,7 @@ export default function MachineSpotlight() {
   return (
     <section
       id="showcase"
-      className="relative overflow-hidden bg-slate-50 py-12 sm:py-16 border-b border-slate-200"
+      className="relative overflow-hidden bg-slate-50 py-12 sm:py-8 border-b border-slate-200"
     >
       <div className="relative mx-auto grid max-w-[1450px] gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
         {/* Left: Machine Photo Container - Perfectly proportioned */}

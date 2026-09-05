@@ -38,7 +38,7 @@ export default function CapabilitiesSection() {
   return (
     <section
       id="capabilities"
-      className="relative overflow-hidden bg-slate-50 py-16 sm:py-20 border-b border-slate-200"
+      className="relative overflow-hidden bg-slate-50 py-10 sm:py-8 border-b border-slate-200"
     >
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.9fr)]">

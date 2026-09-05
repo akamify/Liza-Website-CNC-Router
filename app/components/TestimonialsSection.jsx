@@ -22,22 +22,19 @@ export default function TestimonialsSection() {
   return (
     <section
       id="testimonials"
-      className="relative overflow-hidden bg-slate-50 py-16 sm:py-20 border-b border-slate-200"
+      className="relative overflow-hidden bg-slate-50 py-10 sm:py-8 border-b border-slate-200"
     >
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
-            <span className="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.22em] text-cyan-900">
-              Customer Trust
-            </span>
-            <h2 className="mt-5 text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl">
+            <h2 className="text-3xl font-black leading-tight tracking-tight text-slate-900 sm:text-4xl">
               Proven results in real workshop production.
             </h2>
-          </div>
-
           <p className="max-w-xl text-base leading-relaxed text-slate-600 font-medium">
             Strong CNC websites add customer stories because buyers want confidence in support, output quality, and daily reliability.
           </p>
+          </div>
+
         </div>
 
         <div className="mt-12 grid gap-5 lg:grid-cols-3">

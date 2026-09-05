@@ -50,7 +50,7 @@ export default function ApplicationsGrid() {
   return (
     <section
       id="applications"
-      className="relative overflow-hidden bg-white py-14 sm:py-18 border-b border-slate-200"
+      className="relative overflow-hidden bg-white py-10 sm:py-8 border-b border-slate-200"
     >
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">

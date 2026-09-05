@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import InternalPageHero from "../components/InternalPageHero";
+import ProductBannerSlider from "../components/ProductBannerSlider";
 import { productCatalog } from "../data/siteContent";
 
 export const metadata = {
@@ -33,6 +34,7 @@ export default function ProductsPage() {
                     src={product.image}
                     alt={product.title}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
                     className="object-cover"
                   />
                 </div>
@@ -78,6 +80,8 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
+
+      <ProductBannerSlider />
     </main>
   );
 }

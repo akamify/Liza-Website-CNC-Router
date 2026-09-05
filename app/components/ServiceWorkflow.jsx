@@ -31,7 +31,7 @@ export default function ServiceWorkflow() {
   return (
     <section
       id="workflow"
-      className="relative overflow-hidden bg-white py-16 sm:py-20 border-b border-slate-200"
+      className="relative overflow-hidden bg-white py-10 sm:py-8 border-b border-slate-200"
     >
       <div className="relative mx-auto max-w-[1340px] px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
