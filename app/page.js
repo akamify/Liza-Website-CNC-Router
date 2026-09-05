@@ -1,6 +1,7 @@
 import React from "react";
 import ApplicationsGrid from "./components/ApplicationsGrid";
 import CapabilitiesSection from "./components/CapabilitiesSection";
+import ContactEnquiryFormSection from "./components/ContactEnquiryFormSection";
 import FaqSection from "./components/FaqSection";
 import Hero from "./components/Hero";
 import MachineSpotlight from "./components/MachineSpotlight";
@@ -21,6 +22,7 @@ export default function HomePage() {
       <CapabilitiesSection />
       <ServiceWorkflow />
       <TestimonialsSection />
+      <ContactEnquiryFormSection />
       <FaqSection />
       <QuickEnquirySection />
     </main>

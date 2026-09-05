@@ -18,6 +18,32 @@ export const productCatalog = [
     description:
       "Heavy-duty CNC routers for cutting, shaping, profiling, and production-grade routing across workshop and industrial use cases.",
     image: "/cncImg/img1.jpg",
+    images: [
+      {
+        url: "/cncImg/img1.jpg",
+        title: "Heavy Duty CNC Router Machine - Full View",
+        tag: "Machine View",
+        isOutput: false,
+      },
+      {
+        url: "/cncImg/cnc_router_spindle_detail.jpg",
+        title: "High-Speed Spindle & Vacuum Gantry Action",
+        tag: "Spindle Detail",
+        isOutput: false,
+      },
+      {
+        url: "/outputs/carved-wooden-wardrobe.jpg",
+        title: "Full Carved Wooden Wardrobe Cabinet & Panels",
+        tag: "Finished Output",
+        isOutput: true,
+      },
+      {
+        url: "/outputs/peacock-door-carving.jpg",
+        title: "Precision Carved Wooden Door with 3D Peacock Relief",
+        tag: "Final Machine Output ✨",
+        isOutput: true,
+      },
+    ],
     featureLabels: ["High Precision", "Heavy Duty", "Industrial Use"],
     applications: [
       "Furniture panel work",
@@ -40,6 +66,32 @@ export const productCatalog = [
     description:
       "Precision carving solutions designed for intricate woodwork, deep patterns, decorative components, and fine-detail craftsmanship.",
     image: "/cncImg/img2.jpg",
+    images: [
+      {
+        url: "/cncImg/img2.jpg",
+        title: "3D Wood Carving CNC Router - Full View",
+        tag: "Machine View",
+        isOutput: false,
+      },
+      {
+        url: "/cncImg/wood_carving_head_detail.jpg",
+        title: "3D Carving Head & Deep Relief Milling Action",
+        tag: "Carving Detail",
+        isOutput: false,
+      },
+      {
+        url: "/outputs/workshop-carved-headboard.jpg",
+        title: "Freshly Carved Wooden Headboard Panel in Workshop",
+        tag: "Finished Output",
+        isOutput: true,
+      },
+      {
+        url: "/outputs/peacock-door-carving.jpg",
+        title: "Solid Teak Wood Door with Intricate 3D Relief Carving",
+        tag: "Final Machine Output ✨",
+        isOutput: true,
+      },
+    ],
     featureLabels: ["Wood Detail", "Smooth Finish", "Creative Design"],
     applications: [
       "Temple and art panels",
@@ -62,6 +114,32 @@ export const productCatalog = [
     description:
       "High-precision engraving machines for text, logos, fine etching, and artistic detailing on wood and selected sheet materials.",
     image: "/cncImg/img3.jpg",
+    images: [
+      {
+        url: "/cncImg/img3.jpg",
+        title: "Precision Wood Engraving CNC Machine - Full View",
+        tag: "Machine View",
+        isOutput: false,
+      },
+      {
+        url: "/cncImg/wood_engraving_bit_detail.jpg",
+        title: "0.2mm Precision Engraving Bit & Pattern Etching",
+        tag: "Engraving Detail",
+        isOutput: false,
+      },
+      {
+        url: "/outputs/workshop-carved-headboard.jpg",
+        title: "Precision Etched & Carved Wooden Crafts Panel",
+        tag: "Finished Output",
+        isOutput: true,
+      },
+      {
+        url: "/outputs/carved-wooden-wardrobe.jpg",
+        title: "Modern Architectural Engraved & Routed Cabinet Panels",
+        tag: "Final Machine Output ✨",
+        isOutput: true,
+      },
+    ],
     featureLabels: ["Fine Engraving", "Sharp Output", "Production Ready"],
     applications: [
       "Name plates and branding",
