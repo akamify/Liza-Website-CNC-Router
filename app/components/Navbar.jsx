@@ -59,7 +59,7 @@ export default function Navbar() {
               <span className="text-xl sm:text-2xl font-black tracking-wide text-slate-900">
                 LIZA
               </span>
-              <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-xs" />
+              {/* <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-xs" /> */}
             </div>
             <span className="text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.24em] text-cyan-800">
               CNC Technologies
