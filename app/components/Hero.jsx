@@ -38,7 +38,12 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  const doubleBanners = [...productCatalog, ...productCatalog];
+  const doubleBanners = [
+    ...productCatalog,
+    ...productCatalog,
+    ...productCatalog,
+    ...productCatalog,
+  ];
 
   return (
     <section

@@ -23,6 +23,7 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 html {
@@ -48,21 +49,25 @@ html {
   background: #94a3b8;
 }
 
-/* Infinite Seamless Marquee Ticker Animation */
+/* Ultra-Smooth 60FPS Hardware-Accelerated Marquee Animation */
 @keyframes marquee-scroll {
   0% {
-    transform: translateX(0%);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .animate-marquee-smooth {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 30s linear infinite;
+  animation: marquee-scroll 38s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  transform: translateZ(0);
 }
 
 .animate-marquee-smooth:hover {
