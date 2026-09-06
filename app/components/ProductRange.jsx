@@ -4,14 +4,13 @@ import Link from "next/link";
 import {
   ArrowRight,
   BadgeCheck,
-  Box,
   Crosshair,
   DraftingCompass,
   Factory,
   Gauge,
   Gem,
   Grid2X2,
-  MoveRight,
+  MessageSquareQuote,
   PencilLine,
   Phone,
   ScanLine,
@@ -20,6 +19,26 @@ import {
   Sparkles,
   Target,
 } from "lucide-react";
+
+export function EnquiryIcon({ size = 18, className = "", strokeWidth = 1.9 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      <path d="M8 9h8" />
+      <path d="M8 13h6" />
+    </svg>
+  );
+}
 
 const products = [
   {
@@ -41,6 +60,10 @@ const products = [
       {
         label: "Industrial Use",
         icon: Factory,
+      },
+      {
+        label: "Production Ready",
+        icon: BadgeCheck,
       },
     ],
   },
@@ -64,6 +87,10 @@ const products = [
         label: "Creative Design",
         icon: PencilLine,
       },
+      {
+        label: "3D Relief Work",
+        icon: Gem,
+      },
     ],
   },
   {
@@ -83,6 +110,10 @@ const products = [
         icon: Crosshair,
       },
       {
+        label: "High Speed Bit",
+        icon: Gauge,
+      },
+      {
         label: "Production Ready",
         icon: BadgeCheck,
       },
@@ -99,128 +130,34 @@ function ProductCard({ product, index }) {
         group
         relative
         flex
-        min-h-[535px]
         flex-col
         overflow-hidden
         rounded-[24px]
         border
         border-slate-200
         bg-white
-        px-5
-        py-5
+        p-5
         shadow-sm
         transition-all
         duration-300
         hover:-translate-y-1.5
         hover:border-cyan-400
-        hover:shadow-xl
-        sm:px-6
-        sm:pb-6
+        hover:shadow-lg
+        sm:p-5
       "
     >
-      {/* Hover Glow */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -right-24
-          -top-24
-          h-[260px]
-          w-[260px]
-          rounded-full
-          bg-slate-50
-          blur-[80px]
-          opacity-0
-          transition-opacity
-          duration-500
-          group-hover:opacity-100
-        "
-      />
-
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -bottom-32
-          left-1/2
-          h-[260px]
-          w-[360px]
-          -translate-x-1/2
-          rounded-full
-          bg-slate-50
-          blur-[90px]
-        "
-      />
-
-      {/* Icon */}
-      <div
-        className="
-          relative
-          z-20
-          flex
-          h-[56px]
-          w-[56px]
-          items-center
-          justify-center
-          rounded-2xl
-          border
-          border-cyan-200
-          bg-cyan-50
-          shadow-xs
-          transition-all
-          duration-300
-          group-hover:border-cyan-400
-          group-hover:bg-cyan-100
-        "
-      >
-        <Icon
-          size={26}
-          strokeWidth={1.8}
-          className="text-cyan-700"
-        />
-      </div>
-
       {/* Machine visual */}
       <div
         className="
           relative
-          mt-[-20px]
+          mt-1
           flex
-          h-[265px]
+          h-[220px]
           items-center
           justify-center
-          sm:h-[285px]
-          lg:h-[300px]
+          sm:h-[250px]
         "
       >
-        {/* Tech grid */}
-        <div
-          className="
-            absolute
-            inset-x-4
-            bottom-8
-            h-[115px]
-            opacity-[0.17]
-            [background-image:linear-gradient(rgba(19,210,235,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(19,210,235,0.2)_1px,transparent_1px)]
-            [background-size:28px_28px]
-            [mask-image:linear-gradient(to_top,black,transparent)]
-          "
-        />
-
-        <div
-          className="
-            absolute
-            bottom-5
-            left-1/2
-            h-[50px]
-            w-[78%]
-            -translate-x-1/2
-            rounded-[50%]
-            bg-cyan-400/[0.08]
-            blur-2xl
-          "
-        />
-
         <img
           src={product.image}
           alt={product.title}
@@ -228,106 +165,100 @@ function ProductCard({ product, index }) {
           className="
             relative
             z-10
-            max-h-[260px]
+            max-h-[210px]
             w-full
             object-contain
-            drop-shadow-[0_30px_35px_rgba(0,0,0,0.42)]
-            transition-all
-            duration-700
+            transition-transform
+            duration-500
             ease-out
-            group-hover:scale-[1.045]
-            group-hover:drop-shadow-[0_35px_38px_rgba(0,0,0,0.5)]
-            sm:max-h-[280px]
+            group-hover:scale-[1.03]
+            sm:max-h-[240px]
           "
         />
       </div>
 
       {/* Content */}
-      <div className="relative z-20 mt-auto">
-        <h3
-          className="
-            text-[24px]
-            font-black
-            tracking-tight
-            text-slate-900
-            sm:text-[26px]
-          "
-        >
-          {product.title}
-        </h3>
+      <div className="relative z-20 mt-auto flex flex-col justify-between flex-1">
+        <div>
+          <h3
+            className="
+              text-[22px]
+              font-black
+              tracking-tight
+              text-slate-900
+              sm:text-[24px]
+            "
+          >
+            {product.title}
+          </h3>
 
-        <div className="mt-2 flex items-center gap-1">
-          <span className="h-[3px] w-[25px] rounded-full bg-emerald-500" />
-          <span className="h-[3px] w-[15px] rounded-full bg-cyan-500" />
+          <div className="mt-2 flex items-center gap-1">
+            <span className="h-[3px] w-[25px] rounded-full bg-emerald-500" />
+            <span className="h-[3px] w-[15px] rounded-full bg-cyan-500" />
+          </div>
+
+          <p
+            className="
+              mt-3
+              text-[13.5px]
+              font-medium
+              leading-[1.6]
+              text-slate-600
+              sm:text-[14px]
+            "
+          >
+            {product.description}
+          </p>
+
+          {/* 4 Feature Badges — 2 per line on mobile */}
+          <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {product.features.map((feature) => {
+              const FeatureIcon = feature.icon;
+
+              return (
+                <div
+                  key={feature.label}
+                  className="
+                    flex
+                    min-h-[38px]
+                    items-center
+                    justify-center
+                    gap-1.5
+                    rounded-xl
+                    border
+                    border-slate-200
+                    bg-slate-50
+                    px-2
+                    py-1.5
+                    text-center
+                    text-[11px]
+                    font-semibold
+                    text-slate-800
+                    transition-all
+                    duration-200
+                    hover:border-emerald-300
+                    hover:bg-emerald-50
+                    sm:text-[12px]
+                  "
+                >
+                  <FeatureIcon
+                    size={14}
+                    strokeWidth={1.8}
+                    className="shrink-0 text-emerald-600"
+                  />
+
+                  <span className="truncate">{feature.label}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
-        <p
-          className="
-            mt-3.5
-            max-w-[95%]
-            text-[14px]
-            font-medium
-            leading-[1.65]
-            text-slate-600
-            sm:text-[15px]
-          "
-        >
-          {product.description}
-        </p>
-
-        <div
-          className="
-            mt-5
-            grid
-            grid-cols-1
-            gap-2
-            min-[470px]:grid-cols-3
-          "
-        >
-          {product.features.map((feature) => {
-            const FeatureIcon = feature.icon;
-
-            return (
-              <div
-                key={feature.label}
-                className="
-                  flex
-                  min-h-[42px]
-                  items-center
-                  justify-center
-                  gap-2
-                  rounded-xl
-                  border
-                  border-slate-200
-                  bg-slate-50
-                  px-2
-                  text-center
-                  text-[12px]
-                  font-semibold
-                  text-slate-800
-                  transition-all
-                  duration-200
-                  hover:border-emerald-300
-                  hover:bg-emerald-50
-                  sm:text-[12.5px]
-                "
-              >
-                <FeatureIcon
-                  size={16}
-                  strokeWidth={1.8}
-                  className="shrink-0 text-emerald-600"
-                />
-
-                <span>{feature.label}</span>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+        {/* Buttons — 2 per line on mobile */}
+        <div className="mt-6 grid grid-cols-2 gap-2.5 sm:flex sm:flex-row">
           <Link
             href={`/products/${product.slug}`}
-            className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 px-5 text-sm font-bold text-white shadow-sm hover:shadow-md transition-all"
+            className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 px-3 text-xs sm:text-sm font-bold text-white shadow-xs hover:shadow-md transition-all text-center"
           >
             <span className="text-white">View Details</span>
           </Link>
@@ -335,23 +266,13 @@ function ProductCard({ product, index }) {
             href="#"
             data-enquiry-trigger="true"
             data-machine-type={product.title}
-            className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-slate-300 bg-white px-5 text-sm font-bold text-slate-800 shadow-xs hover:bg-slate-50 hover:border-slate-400 cursor-pointer"
+            className="inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-xl border border-slate-300 bg-white px-3 text-xs sm:text-sm font-bold text-slate-800 shadow-xs hover:bg-slate-50 hover:border-slate-400 cursor-pointer text-center"
           >
-            Get Enquiry
+            <EnquiryIcon size={15} className="text-cyan-700 shrink-0" />
+            <span>Get Enquiry</span>
           </a>
         </div>
       </div>
-
-      {/* Corner gradient */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          rounded-[28px]
-          bg-[linear-gradient(135deg,rgba(255,255,255,0.025),transparent_35%,transparent_70%,rgba(0,220,255,0.025))]
-        "
-      />
     </article>
   );
 }
@@ -366,7 +287,7 @@ export default function ProductRange() {
         overflow-hidden
         bg-white
         py-12
-        sm:py-8
+        sm:py-16
         border-b
         border-slate-200
       "
@@ -380,8 +301,8 @@ export default function ProductRange() {
           className="
             grid
             items-center
-            gap-12
-            lg:grid-cols-[minmax(0,1.5fr)_minmax(360px,0.9fr)]
+            gap-8
+            lg:grid-cols-[minmax(0,1.5fr)_minmax(320px,0.9fr)]
             lg:gap-10
           "
         >
@@ -397,7 +318,7 @@ export default function ProductRange() {
                 border-cyan-200
                 bg-cyan-50
                 px-4
-                py-2
+                py-1.5
               "
             >
               <span
@@ -425,15 +346,15 @@ export default function ProductRange() {
 
             <h2
               className="
-                mt-6
+                mt-4
                 max-w-[850px]
-                text-[38px]
+                text-[32px]
                 font-black
-                leading-[1.05]
+                leading-[1.1]
                 tracking-tight
                 text-slate-900
-                sm:text-[50px]
-                lg:text-[58px]
+                sm:text-[46px]
+                lg:text-[54px]
               "
             >
               Solutions Built for
@@ -455,13 +376,13 @@ export default function ProductRange() {
 
             <p
               className="
-                mt-5
+                mt-4
                 max-w-[760px]
-                text-[16px]
+                text-[15px]
                 font-medium
                 leading-[1.6]
                 text-slate-600
-                sm:text-[17px]
+                sm:text-[16.5px]
               "
             >
               LIZA offers a complete range of CNC solutions — CNC Router
@@ -470,189 +391,83 @@ export default function ProductRange() {
               excellence.
             </p>
 
-            <div className="mt-6 h-[3px] w-[42px] rounded-full bg-cyan-600" />
+            <div className="mt-5 h-[3px] w-[42px] rounded-full bg-cyan-600" />
           </div>
 
-          {/* Right CTA panel */}
-          <div
-            className="
-              relative
-              flex
-              min-h-[50px]
-              items-center
-              justify-center
-              lg:justify-end
-            "
-          >
-            {/* Tech circuit lines */}
-            <div
-              className="
-                pointer-events-none
-                absolute
-                inset-y-0
-                left-0
-                right-0
-                hidden
-                lg:block
-              "
-            >
-              <div
-                className="
-                  absolute
-                  left-[3%]
-                  top-[5%]
-                  h-[82%]
-                  w-[78%]
-                  rounded-l-[70px]
-                  border-l
-                  border-t
-                  border-cyan-400/25
-                "
-              />
-
-              <div
-                className="
-                  absolute
-                  left-[7%]
-                  top-[13%]
-                  h-[68%]
-                  w-[72%]
-                  rounded-l-[58px]
-                  border-l
-                  border-t
-                  border-cyan-400/20
-                "
-              />
-
-              <div
-                className="
-                  absolute
-                  left-[11%]
-                  top-[21%]
-                  h-[52%]
-                  w-[65%]
-                  rounded-l-[46px]
-                  border-l
-                  border-t
-                  border-cyan-400/20
-                "
-              />
-
-              <span className="absolute left-[1.8%] top-[44%] h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_12px_rgba(0,220,255,1)]" />
-              <span className="absolute left-[6.4%] top-[44%] h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_12px_rgba(0,220,255,1)]" />
-              <span className="absolute left-[10.5%] top-[44%] h-1.5 w-1.5 rounded-full bg-cyan-400/70" />
-            </div>
-
-            {/* Dot pattern */}
-            <div
-              className="
-                pointer-events-none
-                absolute
-                left-[25%]
-                top-[26%]
-                hidden
-                h-[110px]
-                w-[170px]
-                opacity-25
-                lg:block
-                [background-image:radial-gradient(circle,#00dff0_1.5px,transparent_1.5px)]
-                [background-size:15px_15px]
-              "
-            />
-
-            <div
-              className="
-                relative
-                z-10
-                flex
-                w-full
-                max-w-[355px]
-                flex-col
-                gap-5
-              "
-            >
+          {/* Right CTA panel — 2 per line on mobile */}
+          <div className="relative flex w-full justify-start lg:justify-end">
+            <div className="grid grid-cols-2 gap-3 w-full max-w-[360px]">
               <a
-                href="#product-list"
+                href="/products"
                 className="
                   group
                   flex
-                  min-h-[58px]
+                  min-h-[50px]
                   items-center
-                  justify-between
+                  justify-center
+                  gap-2
                   rounded-full
                   bg-[linear-gradient(90deg,#a8f000_0%,#22e4c4_48%,#09d6e7_100%)]
-                  px-7
+                  px-4
                   text-[#01131c]
-                  shadow-[0_12px_40px_rgba(57,236,175,0.2)]
+                  shadow-xs
                   transition-all
                   duration-300
-                  hover:-translate-y-1
-                  hover:shadow-[0_18px_50px_rgba(55,240,180,0.3)]
+                  hover:-translate-y-0.5
+                  hover:shadow-md
                 "
               >
-                <span className="flex items-center gap-4 text-[15px] font-black sm:text-[16px]">
-                  <Grid2X2 size={20} strokeWidth={2.3} />
-                  Explore Products
+                <span className="flex items-center gap-2 text-xs font-black sm:text-sm">
+                  <Grid2X2 size={16} strokeWidth={2.3} />
+                  Products
                 </span>
-
-                <ArrowRight
-                  size={21}
-                  strokeWidth={2.5}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
               </a>
 
               <a
-                href="#contact"
+                href="#"
                 data-enquiry-trigger="true"
                 className="
                   group
                   flex
-                  min-h-[58px]
+                  min-h-[50px]
                   items-center
                   justify-center
-                  gap-4
+                  gap-2
                   rounded-full
                   border
-                  border-cyan-400/50
-                  bg-[#031620]/80
-                  px-7
-                  text-[15px]
+                  border-cyan-500/40
+                  bg-slate-900
+                  px-4
+                  text-xs
                   font-bold
                   text-cyan-300
-                  backdrop-blur-xl
                   transition-all
                   duration-300
-                  hover:-translate-y-1
-                  hover:border-cyan-300
-                  hover:bg-cyan-400/[0.05]
-                  hover:text-cyan-200
-                  sm:text-[16px]
+                  hover:-translate-y-0.5
+                  hover:bg-slate-800
+                  sm:text-sm
                 "
-                >
-                  <Phone
-                    size={21}
+              >
+                <EnquiryIcon
+                  size={16}
                   strokeWidth={1.9}
-                  className="transition-transform duration-300 group-hover:rotate-6"
-                  />
-
-                  Get Quote
-                </a>
+                />
+                Get Quote
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Products */}
+        {/* Products Grid */}
         <div
           id="product-list"
           className="
-            mt-14
+            mt-10
             grid
             grid-cols-1
-            gap-5
+            gap-6
             md:grid-cols-2
             xl:grid-cols-3
-            xl:gap-6
           "
         >
           {products.map((product, index) => (
@@ -664,23 +479,6 @@ export default function ProductRange() {
           ))}
         </div>
       </div>
-
-      {/* Bottom ambient glow */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          bottom-[-180px]
-          left-1/2
-          -z-10
-          h-[340px]
-          w-[70%]
-          -translate-x-1/2
-          rounded-full
-          bg-cyan-400/[0.035]
-          blur-[110px]
-        "
-      />
     </section>
   );
 }

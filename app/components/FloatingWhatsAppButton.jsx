@@ -1,3 +1,6 @@
+"use client";
+
+import { PhoneCall } from "lucide-react";
 import { companyInfo } from "../data/siteContent";
 
 export function WhatsAppIcon({ className = "h-6 w-6" }) {
@@ -10,15 +13,34 @@ export function WhatsAppIcon({ className = "h-6 w-6" }) {
 
 export default function FloatingWhatsAppButton() {
   return (
-    <a
-      href={companyInfo.whatsappHref}
-      target="_blank"
-      rel="noreferrer"
-      aria-label="Chat on WhatsApp"
-      className="fixed bottom-5 right-5 z-[70] inline-flex h-15 w-15 items-center justify-center rounded-full border border-white/20 bg-gradient-to-br from-[#25D366] via-[#1ebe5b] to-[#128C7E] text-white shadow-[0_18px_45px_rgba(37,211,102,0.45)] transition-transform duration-300 hover:scale-105"
-    >
-      <span className="absolute inset-0 rounded-full bg-white/10" />
-      <WhatsAppIcon className="relative h-7 w-7 text-white fill-white" />
-    </a>
+    <div className="fixed bottom-5 right-5 z-[70] flex flex-col gap-3 items-center">
+      {/* Floating Call Button */}
+      <a
+        href={companyInfo.phoneHref}
+        aria-label="Call Us Now"
+        className="group relative inline-flex h-13 w-13 items-center justify-center rounded-full border border-white/20 bg-gradient-to-br from-cyan-500 via-teal-600 to-blue-700 text-white shadow-[0_12px_30px_rgba(6,182,212,0.45)] transition-transform duration-300 hover:scale-110 active:scale-95"
+      >
+        <span className="absolute inset-0 rounded-full bg-white/10" />
+        <PhoneCall className="relative h-6 w-6 text-white animate-pulse" />
+        <span className="absolute right-15 whitespace-nowrap rounded-lg bg-slate-900 px-2.5 py-1 text-[11px] font-bold text-white opacity-0 shadow-md transition-opacity duration-200 group-hover:opacity-100 pointer-events-none">
+          Call {companyInfo.phone}
+        </span>
+      </a>
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href={companyInfo.whatsappHref}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Chat on WhatsApp"
+        className="group relative inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-gradient-to-br from-[#25D366] via-[#1ebe5b] to-[#128C7E] text-white shadow-[0_18px_45px_rgba(37,211,102,0.45)] transition-transform duration-300 hover:scale-110 active:scale-95"
+      >
+        <span className="absolute inset-0 rounded-full bg-white/10" />
+        <WhatsAppIcon className="relative h-7 w-7 text-white fill-white" />
+        <span className="absolute right-16 whitespace-nowrap rounded-lg bg-slate-900 px-2.5 py-1 text-[11px] font-bold text-white opacity-0 shadow-md transition-opacity duration-200 group-hover:opacity-100 pointer-events-none">
+          Chat on WhatsApp
+        </span>
+      </a>
+    </div>
   );
 }
